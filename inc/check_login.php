@@ -1,12 +1,4 @@
 <?php
-
-require_once("inc/db_conn.php");
-
-$uname = $_POST['uname'];
-$pwd = $_POST['pwd'];
-
-session_start();
-
 if (isset($_SESSION['uname'])) {
     echo "<script>location.href='overzicht.php'</script>";
 } else {
@@ -24,4 +16,3 @@ if (isset($_SESSION['uname'])) {
     }
 }
 ?>
-

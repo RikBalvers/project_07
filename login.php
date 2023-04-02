@@ -11,28 +11,10 @@
 <body>
 
 <?php
-    session_start();
-
-    $host = "127.0.0.1";
-    $db = 'hekkensluiter_p07';
-    $user = 'root';
-    $pass = '';
-    $charset = 'utf8mb4';
-    $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
-    $options = [
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-        PDO::ATTR_EMULATE_PREPARES => false,
-        PDO::ATTR_DRIVER_NAME => 'mysql',
-    ];
-    
-
-    try {
-        $pdo = new PDO($dsn, $user, $pass, $options);
-    } catch (\PDOException $e) {
-        throw new PDOException($e->getMessage(), (int)$e->getCode());
-    }
-
+require_once("inc/db_conn.php");
+if (isset($_SESSION['uname'])) {
+    echo "<script>location.href='overzicht.php'</script>";
+}
 ?>
 
     <!-- Het menu -->

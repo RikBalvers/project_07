@@ -1,8 +1,8 @@
 <?php
 $host = "127.0.0.1";
 $db = 'hekkensluiter_p07';
-$user = 'hoornhack';
-$pass = 'Wjg5l[-nn(QBbUqV';
+$user = 'root';
+$pass = '';
 $charset = 'utf8mb4';
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
 $options = [
@@ -12,10 +12,11 @@ $options = [
     PDO::ATTR_DRIVER_NAME => 'mysql',
 ];
 
-
 try {
     $pdo = new PDO($dsn, $user, $pass, $options);
 } catch (\PDOException $e) {
     throw new PDOException($e->getMessage(), (int)$e->getCode());
 }
+
+session_start();
 ?>
