@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <title>Login</title>
 </head>
 <body>
@@ -17,15 +18,8 @@ if (isset($_SESSION['uname'])) {
 }
 ?>
 
-    <!-- Het menu -->
-    <div class="menu">
-        <a href="index.html"><img class="logo" src="images/hoornhack_logo.png" alt="logo"></a>
-        <a class="menu_text" href="index.html">Home</a>
-        <a class="menu_text" href="over_ons.html">Over ons</a>
-        <a class="menu_text" href="contact.html">Contact</a>
-        <a class="menu_text" href="reserveren.html">Reserveren</a>
-        <a href="login.php"><img class="account"src="images/account_icon.png" alt="account icon"></a>
-    </div>
+<?php include("inc/menu_klantenportaal.php") ?>
+
 
     <!-- Dit is het login gedeelte, hier word met de post methode en later in dit document word het verwerkt -->
     <div class="login_background">
@@ -40,10 +34,19 @@ if (isset($_SESSION['uname'])) {
                         Wachtwoord: <input type="text" name="pwd">
                     </div>
                     </br>
+                    <div class="g-recaptcha" data-sitekey="6LfT_hslAAAAAHm2MXbg-mt_RES4-hrz9BwUGlU4"></div>
                     <div class="submit_blok">
                         <input type="submit" name="login" value="Inloggen">
                     </div>
                 </form>
+            </div>
+        </div>
+
+        <div class="sluiten_blok">
+            <div class="sluiten_knop">
+                <a href="index.php">
+                    <i class="fa fa-thin fa-xmark" style="color: #4d4d4d; font-size: 18px;"></i> Sluiten
+                </a>
             </div>
         </div>
     </div>

@@ -4,6 +4,11 @@
     font-family: Segoe UI;
 }
 
+body {
+    position: relative;
+    z-index: -1;
+}
+
 .banner {
     height: 600px;
     width: 100%;
@@ -24,6 +29,7 @@
     background-color: #dededef2;
     position: fixed;
     top: 0;
+    z-index: 2;
     height: 100px;
     width: 100%;
     text-align: right;
@@ -99,41 +105,215 @@
 
 .content {
     margin: auto;
-    background-color: #f1f1f1;
+    background-color: #ffa60048;
     position: relative;
+    display: flex;
+    justify-content: center;
     max-width: 1400px;
-    width: 100%;
-    padding: 50px;
+    padding: 60px 0 70px;
+}
+
+.content .content_content {
+    display: flex;
+    margin-right: 40px;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    width: 40%;
+}
+
+.content .content_content h1 {
+    font-size: 34px;
 }
 
 .content .content_text {
-    width: 45%;
-    text-align: center;
+    width: 95%;
+    text-align: left;
+    margin-top: 40px;
+    font-size: 18px;
     position: relative;
-    background-color: #8D8D8D;
+}
+
+.content .content_pics {
+    width: 40%;
+    text-align: center;
+    margin: 0;
+}
+
+.content_pics h1 {
+    padding: 0 0 40px;
+}
+
+.content .content_pics img {
+    max-width: 550px;
+}
+
+.form_content {
+    margin: auto;
+    background-color: #FFC457;
+    width: 55%;
+    border-radius: 15px;
+    padding: 40px 20px;
+}
+
+.form_content form {
+    text-align: center;
+}
+
+.form_content form input[type=email] {
+    width: 80%;
+    margin: 10px;
+    border: 1px solid transparent;
+    padding: 10px;
+    border-radius: 3px;
+}
+
+.form_content form input[type=email]:focus {
+    border: 1px solid #555;
+    outline: none;
+}
+
+.form_content form input[type=text] {
+    width: 80%;
+    margin: 10px;
+    border: 1px solid transparent;
+    padding: 10px;
+    border-radius: 3px;
+}
+
+.form_content form input[type=text]:focus {
+    border: 1px solid #555;
+    outline: none;
+}
+
+
+.form_content form textarea {
+    max-width: 80%;
+    width: 100%;
+    min-height: 100px;
+    min-width: 80%;
+    margin: 10px;
+    border: 1px solid transparent;
+    padding: 10px;
+    border-radius: 3px;
+}
+
+.form_content form textarea:focus {
+    outline: none;
+    border: 1px solid #555;
+}
+
+.form_content .contact_submit_blok input {
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: 1px solid #4d4d4d;
+    background-color: #fff;
+}
+
+.form_content .contact_submit_blok input:hover {
+    cursor: pointer;
+    background-color: #f1f1f1;
+}
+
+.content_text table {
+    width: 80%;
+    margin: auto;
+}
+
+.content_text table th, .content_text table td {
+    height: 35px;
+}
+
+.form_reserveren {
+    margin: auto;
+    background-color: #FFC457;
+    width: 55%;
+    border-radius: 15px;
+    padding: 40px 20px;
+}
+
+.form_reserveren form {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.reserveren_form_info input[type=text],
+.reserveren_form_info textarea,
+.reserveren_form_info input[type=email],
+.reserveren_form_info input[type=tel],
+.reserveren_form_info input[type=date],
+.reserveren_form_info input[type=datetime-local] {
+    width: 80%;
+    margin: 10px;
+    border: 1px solid transparent;
+    padding: 10px;
+    border-radius: 3px;
+    min-width: 80%;
+    max-width: 80%;
+    min-height: 17px;
+}
+
+/* .form_reserveren_vervolg , .form_reserveren_optional {
+    display: none;
+} */
+
+
+
+.reserveren_form_info input:focus, 
+.reserveren_form_info textarea:focus {
+    border: 1px solid #555;
+    outline: none;
+}
+
+#relatie_met_gedetineerde {
+    padding: 5px;
+    outline: none;
+    width: 50%;
+    border: 1px solid transparent;
+    margin: 10px 0;
+}
+
+.form_reserveren_vervolg input {
+    padding: 10px;
+    width: fit-content;
+    border: 1px solid #555;
+    border-radius: 15px;
+    background-color: #fff;
+}
+
+.reserveren_submit_blok input:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+    outline: none;
 }
 
 .footer_place {
-    background-color: #131B23;
-    width: 100%;
-    color: white;
+    background-color: #f1f1f1;
     position: relative;
-    height: 300px;
 }
 
-.footer_place .footer_blokken {
-    max-width: 1000px;
-    position: relative;
-    width: 100%;
-    margin: auto;
-    padding: 100px;
+.footer_place .footer_blok {
+    max-width: 1300px;
+    margin: 0 auto;
 }
 
-.footer_blokken .footer_blok1 {
-    width: 30%;
+.footer_blok .footer_blok1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 0;
+    margin: 0 auto;
+}
+
+.footer_blok1 .footer_img {
     position: relative;
-    text-align: center;
-    background-color: #FFA500;
+    display: block;
+}
+
+.footer_img img {
+    width: 200px;
+    max-width: 100%;
+    height: auto;
 }
 
 .login_background {
@@ -147,9 +327,9 @@
 
 .login_blok {
     margin: auto;
-    margin-top: 175px;
+    margin-top: 140px;
     background-color: #FFC457;
-    height: 300px;
+    height: 380px;
     width: 520px;
     border-radius: 15px;
     padding: 40px;
@@ -173,7 +353,13 @@
 .login_text input {
     height: 24px;
     padding: 0px 5px;
+    outline: none;
     font-size: 16px;
+}
+
+.g-recaptcha {
+    margin: auto;
+    width: fit-content;
 }
 
 .submit_blok {
@@ -193,6 +379,23 @@
     transition: 0.2s;
     cursor: pointer;
     background-color: #f1f1f1;
+}
+
+.sluiten_blok {
+    margin-top: 140px;
+}
+
+.sluiten_blok .sluiten_knop a{
+    background-color: #ffce73;
+    text-decoration: none;
+    border-radius: 10px;
+    padding: 10px 15px;
+    border: 1px solid #8D8D8D;
+    color: #4d4d4d;
+}
+
+.sluiten_blok .sluiten_knop a:hover {
+    background-color: #FFC457;
 }
 
 .terug_blok {
@@ -274,8 +477,89 @@
     background-color: #f1f1f1;
 }
 
-/* width */
 ::-webkit-scrollbar {
   display: none;
+}
+
+.worker_content {
+    left: 350px;
+    top: 250px;
+    max-width: 1700px;
+    width: 80%;
+    position: relative;
+    text-align: center;
+}
+
+.worker_content table {
+    background-color: #4d4d4d;
+    width: 100%;
+    margin: auto;
+    width: fit-content;
+    height: fit-content;
+    padding: 5px;
+}
+
+.worker_content th {
+    background-color: #FFA500;
+    color: #f1f1f1;
+    width: fit-content;
+    font-size: 14px;
+    text-align: center;
+    padding: 5px;
+    line-height: 15px;
+}
+
+.worker_content td {
+    padding: 5px 10px;
+    font-size: 13px;
+    background-color: #f1f1f1;
+    line-height: 20px;
+    width: fit-content;
+    text-align: left;
+}
+
+.worker_content_toevoegen {
+    top: 100px;
+    left: 350px;
+    max-width: 1700px;
+    width: 80%;
+    position: relative;
+    text-align: center;
+}
+
+.worker_content_toevoegen form {
+    padding: 10px;
+    background-color: #FFA500;
+    width: 300px;
+    margin: auto;
+    border-radius: 20px;
+}
+
+.worker_content_toevoegen form input {
+    padding: 5px;
+    width: 60%;
+    outline: none;
+}
+
+.worker_content_toevoegen form input[type=submit] {
+    padding: 5px;
+    width: 40%;
+    background-color: #fff;
+    border-radius: 10px;
+    border: 1px solid #555;
+}
+
+.worker_content_toevoegen form input[type=submit]:hover {
+    cursor: pointer;
+    background-color: #f1f1f1;
+}
+
+.worker_content_toevoegen form textarea {
+    padding: 5px;
+    min-width: 60%;
+    max-width: 60%;
+    outline: none;
+    min-height: 20px;
+    height: 20px;
 }
 

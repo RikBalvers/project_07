@@ -1,5 +1,5 @@
 <?php
-$host = "127.0.0.1";
+$host = "localhost";
 $db = 'hekkensluiter_p07';
 $user = 'root';
 $pass = '';
@@ -19,4 +19,19 @@ try {
 }
 
 session_start();
+
+
+// define('HOST', 'localhost');
+// define('DATABASE', 'project_07');
+// define('USER', 'root');
+// define('PASSWORD', '');
+
+// try {
+//     $dbconn = new PDO("mysql:host=".HOST.";dbname=".DATABASE, USER, PASSWORD);
+//     $dbconn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+// } catch(PDOException $e) {
+//     throw new PDOException($e->getMessage(), (int)$e->getCode());
+// }
+
+
 ?>
