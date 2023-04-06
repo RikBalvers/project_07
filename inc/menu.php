@@ -12,36 +12,32 @@ switch ($userRole) {
     case "Admin":
         $menu = '
                 <a href="./overzicht.php">Overzicht</a>
-                <a href="#">Gegevens wijzigen</a>
                 <a href="./toevoegen.php">Gedetineerde toevoegen</a>
-                <a href="#">Over mijn account</a>';
+                <a href="./account.php">Over mijn account</a>';
         break;
     case "Directeur":
         $menu = '
                 <a href="./overzicht.php">Overzicht</a>
-                <a href="#">Gegevens wijzigen</a>
                 <a href="./toevoegen.php">Gedetineerde toevoegen</a>
-                <a href="#">Over mijn account</a>';
+                <a href="./account.php">Over mijn account</a>';
         break;
     case "Bewaker":
         $menu = '
                 <a href="./overzicht.php">Overzicht</a>
                 <a href="./toevoegen.php">Gedetineerde toevoegen</a>
-                <a href="#">Over mijn account</a>';
+                <a href="./account.php">Over mijn account</a>';
         break;
     case "Coordinator":
         $menu = '
                 <a href="./overzicht.php">Overzicht</a>
-                <a href="#">Gegevens wijzigen</a>
                 <a href="./toevoegen.php">Gedetineerde toevoegen</a>
-                <a href="#">Over mijn account</a>';
+                <a href="./account.php">Over mijn account</a>';
         break;
     case "Supervisor":
         $menu = '
-                <a href="#">Overzicht</a>
-                <a href="#">Gegevens wijzigen</a>
+                <a href="./overzicht.php">Overzicht</a>
                 <a href="./toevoegen.php">Gedetineerde toevoegen</a>
-                <a href="#">Over mijn account</a>';
+                <a href="./account.php">Over mijn account</a>';
         break;
     default:
         $menu = 'Er gaat iets mis hier'; // Set an empty menu if the user role is unknown

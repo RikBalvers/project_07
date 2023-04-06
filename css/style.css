@@ -4,9 +4,12 @@
     font-family: Segoe UI;
 }
 
+html {
+    height: 140px;
+}
+
 body {
-    position: relative;
-    z-index: -1;
+    height: 100%;
 }
 
 .banner {
@@ -486,6 +489,7 @@ body {
     top: 250px;
     max-width: 1700px;
     width: 80%;
+    z-index: -100;
     position: relative;
     text-align: center;
 }
@@ -518,11 +522,24 @@ body {
     text-align: left;
 }
 
+.worker_content td a i{
+    font-size: 20px;
+    color: blue;
+    vertical-align: top;
+    line-height: 16px;
+    margin: 0 4px;
+}
+
+.worker_content td .btn-delete i {
+    color: red;
+}
+
 .worker_content_toevoegen {
-    top: 100px;
+    top: 170px;
     left: 350px;
     max-width: 1700px;
     width: 80%;
+    z-index: -100;
     position: relative;
     text-align: center;
 }
@@ -533,6 +550,11 @@ body {
     width: 300px;
     margin: auto;
     border-radius: 20px;
+}
+
+.worker_content_toevoegen form h1 {
+    color: white;
+    font-size: 26px;
 }
 
 .worker_content_toevoegen form input {
@@ -563,3 +585,44 @@ body {
     height: 20px;
 }
 
+.worker_content_overplaatsen {
+    top: 300px;
+    left: 350px;
+    max-width: 1700px;
+    width: 80%;
+    z-index: -100;
+    position: relative;
+    text-align: center;
+}
+
+.worker_content_overplaatsen form {
+    padding: 10px;
+    background-color: #FFA500;
+    width: 300px;
+    margin: auto;
+    border-radius: 20px;
+}
+
+.worker_content_overplaatsen form h1 {
+    color: white;
+    font-size: 26px;
+}
+
+.worker_content_overplaatsen form input {
+    padding: 5px;
+    width: 60%;
+    outline: none;
+}
+
+.worker_content_overplaatsen form input[type=submit] {
+    padding: 5px;
+    width: 40%;
+    background-color: #fff;
+    border-radius: 10px;
+    border: 1px solid #555;
+}
+
+.worker_content_overplaatsen form input[type=submit]:hover {
+    cursor: pointer;
+    background-color: #f1f1f1;
+}

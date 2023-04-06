@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <title>Overzicht</title>
 </head>
@@ -22,16 +23,9 @@
     $userRole = $stmt->fetchColumn();
 ?>
 
-    <!-- Het menu -->
-    <div class="menu">
-        <a href="index.php"><img class="logo" src="images/hoornhack_logo.png" alt="logo"></a>
-        <a class="menu_text" href="index.php">Home</a>
-        <a class="menu_text" href="over_ons.php">Over ons</a>
-        <a class="menu_text" href="contact.php">Contact</a>
-        <a class="menu_text" href="reserveren.php">Reserveren</a>
-        <a href="account.php"><img class="account"src="images/account_icon.png" alt="account icon"></a>
-    </div>
-
+<?php
+include("inc/menu_klantenportaal.php");
+?>
 
     <!-- Het 2e menu, de menu voor het personeel -->
     <div class="worker_menu">
@@ -72,7 +66,8 @@
                                 <th>Cel & vleugel</th>
                                 <th>Historie cellen</th>
                                 <th>Reden gedetineerd</th>
-                                <th>Extra opmerking</th>";
+                                <th>Extra opmerking</th>
+                                <th>Actie</th>";
                     break;
                 }
                 ?>
@@ -88,6 +83,24 @@
                         echo "<td>".$row['naam_gedetineerd']."</td>
                             <td>".$row['locatie_vleugel_cel']."</td>";
                     break;
+                    case 'Coordinator':
+                        echo "<td>".$row['naam_gedetineerd']."</td>
+                            <td>".$row['geboortedatum_gedetineerd']."</td>
+                            <td>".$row['id_nummer']."</td>
+                            <td>".$row['adres_gedetineerd']."</td>
+                            <td>".$row['bezittingen']."</td>
+                            <td>".$row['datum_opsluiting']."</td>
+                            <td>".$row['datum_vrijlating']."</td>
+                            <td>".$row['datum_tijd_bezoek']."</td>
+                            <td>".$row['aantal_bezoeken']."</td>
+                            <td>".$row['locatie_vleugel_cel']." <a href='overplaatsen.php?id={$row['id']}' class='btn-edit'><i class='material-icons md-24'>edit</i></a></td>
+                            <td>".$row['historie_locatie']."</td>
+                            <td>".$row['reden_gedetineerd']."</td>
+                            <td>".$row['opmerkingen']."</td>
+                            <td>
+                                <a href='verwijderen.php?id={$row['id']}' class='btn-delete'><i class='material-icons md-10'>delete</i></a>
+                            </td>";
+                    break;
                     default:
                         echo "<td>".$row['naam_gedetineerd']."</td>
                             <td>".$row['geboortedatum_gedetineerd']."</td>
@@ -98,10 +111,14 @@
                             <td>".$row['datum_vrijlating']."</td>
                             <td>".$row['datum_tijd_bezoek']."</td>
                             <td>".$row['aantal_bezoeken']."</td>
-                            <td>".$row['locatie_vleugel_cel']."</td>
+                            <td>".$row['locatie_vleugel_cel']." <a href='overplaatsen.php?id={$row['id']}' class='btn-edit'><i class='material-icons md-24'>edit</i></a></td>
                             <td>".$row['historie_locatie']."</td>
                             <td>".$row['reden_gedetineerd']."</td>
-                            <td>".$row['opmerkingen']."</td>";
+                            <td>".$row['opmerkingen']."</td>
+                            <td>
+                                <a href='wijzigen.php?id={$row['id']}' class='btn-edit'><i class='material-icons md-24'>edit</i></a>
+                                <a href='verwijderen.php?id={$row['id']}' class='btn-delete'><i class='material-icons md-10'>delete</i></a>
+                            </td>";
                     break;
                 }
                 echo "</tr>";

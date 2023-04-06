@@ -40,7 +40,7 @@ include('inc/menu_klantenportaal.php')
     </div>
 
     <div class="worker_content_toevoegen">
-        <form  method="post">
+        <form  method="post"><br><h1>Toevoegen</h1><br>
             <label for="naam_gedetineerd">Naam gedetineerde*:</label><br>
             <input type="text" id="naam_gedetineerd" name="naam_gedetineerd"><br><br>
             <label for="geboortedatum_gedetineerd">Geboortedatum gedetineerd*:</label><br>
