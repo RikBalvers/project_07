@@ -73,7 +73,7 @@ include("inc/menu_klantenportaal.php");
                 ?>
             </tr>
             <?php
-            $sql="SELECT * FROM gedetineerd";
+            $sql="SELECT * FROM gedetineerd ORDER BY locatie_vleugel_cel";
             $stmt = $pdo->prepare($sql);
             $stmt->execute();
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {

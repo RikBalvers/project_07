@@ -78,6 +78,13 @@ if (isset($_POST['submit'])) {
     $locatie = $_POST['locatie'];
     $reden = $_POST['reden_gedetineerd'];
     $opmerking = $_POST['opmerkingen'];
+
+    if (isset($naam, $geboortedatum, $id, $adres, $opsluit, $vrijlaten, $locatie, $reden)) {
+        echo "<div class='error_niet_gevuld'>Probeer opnieuw, niet alle gevuld</div>";
+        echo "<style> .error_niet_gevuld {color:red;position: absolute; top: 180px; left: 500px;}";
+        exit();
+    }
+
     $sql = "INSERT INTO gedetineerd SET naam_gedetineerd = :naam_gedetineerd, geboortedatum_gedetineerd = :geboortedatum_gedetineerd, 	id_nummer = :id_nummer, 
     adres_gedetineerd = :adres_gedetineerd, bezittingen = :bezittingen, datum_opsluiting = :datum_opsluiting,
     datum_vrijlating = :datum_vrijlating, locatie_vleugel_cel = :locatie_vleugel_cel, reden_gedetineerd = :reden_gedetineerd, opmerkingen = :opmerkingen";

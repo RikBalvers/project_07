@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-    <title>Wijzigen</title>
+    <title>Overplaatsen</title>
 </head>
 <body>
 
@@ -57,7 +57,7 @@ include("inc/menu_klantenportaal.php");
             <input type="text" id="toen_locatie" name="toen_locatie" value="<?php echo $row['historie_locatie'] ?>"><br><br>
             <label for="naar_locatie">Nieuwe locatie:</label><br>
             <input type="text" id="naar_locatie" name="naar_locatie" placeholder="Voorbeeld: A01, B14, C23"><br><br><br>
-            <input type="submit" name="submit" value="Verander"><br><br>
+            <input type="submit" name="submit" value="Opslaan"><br><br>
         </form>
     </div>
 
@@ -82,6 +82,7 @@ if (isset($_POST['submit'])) {
         ':id' => $id
     ]);
     }
+    echo "<script>location.href='overzicht.php'</script>";
 }
 ?>
 
