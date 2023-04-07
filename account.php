@@ -17,7 +17,7 @@
         echo "<script>location.href='login.php'</script>";
     }
     $uname = $_SESSION['uname'];
-    $series = $pdo->query("SELECT * FROM gebruiker WHERE gebruikersnaam = $uname");
+    $series = $pdo->query("SELECT * FROM gebruiker WHERE gebruikersnaam = '$uname'");
     $row = $series->fetch();
 ?>
 
@@ -42,71 +42,71 @@ include("inc/menu_klantenportaal.php");
     </div>
 
     <div class="worker_content_account">
-        <form  method="post"><br>
-            <h2><?php echo $row['naam_gedetineerd'] ?></h2>
-            <h1> Gegevens wijzigen</h1><br>
-            <label for="naam_gedetineerd">Naam gedetineerde*:</label><br>
-            <input type="text" id="naam_gedetineerd" name="naam_gedetineerd" value="<?php echo $row['naam_gedetineerd'] ?>"><br><br>
-            <label for="geboortedatum_gedetineerd">Geboortedatum gedetineerd*:</label><br>
-            <input type="date" id="geboortedatum_gedetineerd" name="geboortedatum_gedetineerd" value="<?php echo $row['geboortedatum_gedetineerd'] ?>"><br><br>
-            <label for="id_nummer">ID-nummer*:</label><br>
-            <input type="number" id="id_nummer" name="id_nummer" value="<?php echo $row['id_nummer'] ?>"><br><br>
-            <label for="adres">Adres*:</label><br>
-            <input type="text" id="adres" name="adres" value="<?php echo $row['adres_gedetineerd'] ?>"><br><br>
-            <label for="bezittingen">Bezittingen:</label><br>
-            <input type="text" id="bezittingen" name="bezittingen" value="<?php echo $row['bezittingen'] ?>"><br><br>
-            <label for="opsluitingsdatum">Opsluitingsdatum*:</label><br>
-            <input type="date" id="opsluitingsdatum" name="opsluitingsdatum" value="<?php echo $row['datum_opsluiting'] ?>"><br><br>
-            <label for="vrijlatingsdatum">Vrijlatingsdatum*:</label><br>
-            <input type="date" id="vrijlatingsdatum" name="vrijlatingsdatum" value="<?php echo $row['datum_vrijlating'] ?>"><br><br>
-            <label for="locatie">Locatie vleugel & cel*:</label><br>
-            <input type="text" id="locatie" name="locatie" value="<?php echo $row['locatie_vleugel_cel'] ?>"><br><br>
-            <label for="reden_gedetineerd">Reden gedetineerd*:</label><br>
-            <input type="text" id="reden_gedetineerd" name="reden_gedetineerd" value="<?php echo $row['reden_gedetineerd'] ?>"><br><br>
-            <label for="opmerkingen">Extra opmerkingen:</label><br>
-            <textarea id="opmerkingen" name="opmerkingen"><?php echo $row['opmerkingen'] ?></textarea><br><br><br>
-            <input type="submit" name="submit" value="Opslaan"><br><br>
+        <form method="post">
+            <h2><?php echo $row['naam_gebruiker'] ?></h2>
+            <h1>Gegevens</h1><br>
+            <table>
+                <tr>
+                    <th>Informatie</th>
+                    <th class="gegevens">Gegevens</th>
+                </tr>
+
+                <tr>
+                    <td>Gebruikersnaam</td>
+                    <td class="gegevens"><input type="text" id="gebruikersnaam" name="gebruikersnaam" value="<?php echo $row['gebruikersnaam'] ?>"></td>
+                </tr>
+
+                <tr>
+                    <td>Type account/rol</td>
+                    <td class="gegevens"><?php echo $row['rol'] ?></td>
+                </tr>
+
+                <tr>
+                    <td>Naam</td>
+                    <td class="gegevens"><input type="text" id="naam_gebruiker" name="naam_gebruiker" value="<?php echo $row['naam_gebruiker'] ?>"?></td>
+                </tr>
+
+                <tr>
+                    <td>E-mail</td>
+                    <td class="gegevens"><input type="text" id="email_gebruiker" name="email_gebruiker" value="<?php echo $row['email_gebruiker'] ?>"?></td>
+                </tr>
+
+                <tr>
+                    <td>Telefoon nummer</td>
+                    <td class="gegevens">+31 <input type="number" id="telefoon_nr_gebruiker" name="telefoon_nr_gebruiker" value="<?php echo $row['telefoon_nr_gebruiker'] ?>"?></td>
+                </tr>
+
+                <tr>
+                    <td>Opmerkingen</td>
+                    <td class="gegevens"><textarea id="opmerkingen" name="opmerkingen"><?php echo $row['opmerkingen'] ?></textarea></td>
+                </tr>
+
+            </table>
+            <br><br>
+            <input type="submit" name="submit" value="Opslaan">
         </form>
     </div>
 
 <?php
 if (isset($_POST['submit'])) {
-    $naam = $_POST['naam_gedetineerd'];
-    $geboortedatum = $_POST['geboortedatum_gedetineerd'];
-    $id_nr = $_POST['id_nummer'];
-    $adres = $_POST['adres'];
-    $bezittingen = $_POST['bezittingen'];
-    $opsluit = $_POST['opsluitingsdatum'];
-    $vrijlaten = $_POST['vrijlatingsdatum'];
-    $locatie = $_POST['locatie'];
-    $reden = $_POST['reden_gedetineerd'];
+    $gebruikersnaam = $_POST['gebruikersnaam'];
+    $naam = $_POST['naam_gebruiker'];
+    $email = $_POST['email_gebruiker'];
+    $tel_nr = $_POST['telefoon_nr_gebruiker'];
     $opmerking = $_POST['opmerkingen'];
 
-    if (!isset($naam, $geboortedatum, $id, $adres, $opsluit, $vrijlaten, $locatie, $reden)) {
-        echo "<div class='error_niet_gevuld'>Probeer opnieuw, niet alle gevuld</div>";
-        echo "<style> .error_niet_gevuld {color:red;position: absolute; top: 180px; left: 500px;}";
-        exit();
-    }
-
-    $sql = "UPDATE gedetineerd SET naam_gedetineerd = :naam_gedetineerd, geboortedatum_gedetineerd = :geboortedatum_gedetineerd, 	id_nummer = :id_nummer, 
-    adres_gedetineerd = :adres_gedetineerd, bezittingen = :bezittingen, datum_opsluiting = :datum_opsluiting,
-    datum_vrijlating = :datum_vrijlating, locatie_vleugel_cel = :locatie_vleugel_cel, reden_gedetineerd = :reden_gedetineerd, opmerkingen = :opmerkingen WHERE id = :id";
+    $sql = "UPDATE gebruiker SET gebruikersnaam = :gebruikersnaam, naam_gebruiker = :naam_gebruiker, 
+    email_gebruiker = :email_gebruiker, telefoon_nr_gebruiker = :telefoon_nr_gebruiker, opmerkingen = :opmerkingen WHERE gebruikersnaam = '$uname'";
     $stmt = $pdo->prepare($sql);
     $stmt->execute([
-        ':naam_gedetineerd' => $naam,
-        ':geboortedatum_gedetineerd' => $geboortedatum,
-        ':id_nummer' => $id_nr,
-        ':adres_gedetineerd' => $adres,
-        ':bezittingen' => $bezittingen,
-        ':datum_opsluiting' => $opsluit,
-        ':datum_vrijlating' => $vrijlaten,
-        ':locatie_vleugel_cel' => $locatie,
-        ':reden_gedetineerd' => $reden,
+        ':gebruikersnaam' => $gebruikersnaam,
+        ':naam_gebruiker' => $naam,
+        ':email_gebruiker' => $email,
+        ':telefoon_nr_gebruiker' => $tel_nr,
         ':opmerkingen' => $opmerking,
-        ':id' => $id
     ]);
 
-    header("location: overzicht.php");
+    header("location: logout.php");
     exit();
 }
 ?>
