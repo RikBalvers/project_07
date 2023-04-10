@@ -10,7 +10,12 @@
 </head>
 <body>
 <?php
-include("inc/db_conn.php")
+require_once("inc/db_conn.php");
+if (isset($_SESSION['uname'])) {
+    $uname = $_SESSION['uname'];
+    $series = $pdo->query("SELECT * FROM gebruiker WHERE gebruikersnaam = '$uname'");
+    $row = $series->fetch();
+}
 ?>
 
     <!-- De banner foto -->
@@ -25,8 +30,23 @@ include("inc/db_conn.php")
         <a class="menu_text" href="over_ons.php">Over ons</a>
         <a class="menu_text" href="contact.php">Contact</a>
         <a id="active" class="menu_text" href="reserveren.php">Reserveren</a>
-        <a href="login.php"><img class="account"src="images/account_icon.png" alt="account icon"></a>
+        <?php
+        if (isset($_SESSION['uname'])) {
+            echo "
+            <div>
+                <a href='account.php'>
+                    <strong>Welkom " . $row['naam_gebruiker'] . "</strong>
+                </a>
+                <a href='login.php'>
+                    <img class='account_login'src='images/account_icon.png' alt='account icon'>
+                </a>
+            </div>";
+        } else {
+            echo '<a href="login.php"><img class="account"src="images/account_icon.png" alt="account icon"></a>';
+        }
+        ?>
     </div>
+
 
     <!-- Dit is de titel van elk pagina -->
     <div class="hoofdtext">
@@ -83,7 +103,11 @@ include("inc/db_conn.php")
             <h1>Reserveren</h1>
             <div class="form_reserveren">
                 <form method="POST">
-                <?php if (isset($_POST['request'])) {echo "<p style='color:darkred;'>Sorry, de actie is niet voltooid</p><p style='color:darkred;'>Neem contact op met ons voor afspraak</p><br>";} ?>
+                    <?php
+                        if (isset($_POST['request'])) {
+                            echo "Verzoek verstuurd";
+                        }
+                    ?>
                     <div class="reserveren_form_info">
                         Naam
                         <input type="text" name="klant_naam_bezoeker_reserveren" placeholder="Uw volledige naam">
@@ -139,6 +163,21 @@ include("inc/db_conn.php")
         $strt_huisnr = $_POST['klant_adres_reserveren'];
         $postcode_woonplaats = $_POST['klant_postocde_woonplaats_reserveren'];
         $opmerkingen = $_POST['reserveren_opmerking_form'];
+
+        $sql = "INSERT INTO bezoekafspraak SET naam_bezoeker = :naam_bezoeker, naam_gevangene = :naam_gevangene, geboortedatum_gevangene = :geboortedatum_gevangene, datum_tijd_bezoek = :datum_tijd_bezoek, relatie_met_gevangene = :relatie_met_gevangene, email_bezoeker = :email_bezoeker, telefoon_nr_bezoeker = :telefoon_nr_bezoeker, adres_bezoeker = :adres_bezoeker, postcode_woonplaats_bezoeker	 = :postcode_woonplaats_bezoeker, opmerkingen = :opmerkingen";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([
+            ':naam_bezoeker' => $naam_bezoeker,
+            ':naam_gevangene' => $naam_gedetineerde,
+            ':geboortedatum_gevangene' => $geboortedatum_gedetineerde,
+            ':datum_tijd_bezoek' => $datetime_bezoeken,
+            ':relatie_met_gevangene' => $relatie_gedetineerd,
+            ':email_bezoeker' => $email_bezoeker,
+            ':telefoon_nr_bezoeker' => $tel_bezoeker,
+            ':adres_bezoeker' => $strt_huisnr,
+            ':postcode_woonplaats_bezoeker' => $postcode_woonplaats,
+            ':opmerkingen' => $opmerkingen
+        ]);
     }
     ?>
 

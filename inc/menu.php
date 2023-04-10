@@ -13,12 +13,14 @@ switch ($userRole) {
         $menu = '
                 <a href="./overzicht.php">Overzicht</a>
                 <a href="./toevoegen.php">Gedetineerde toevoegen</a>
+                <a href="./bezoek.php">Bezoek overzicht</a>
                 <a href="./account.php">Over mijn account</a>';
         break;
     case "Directeur":
         $menu = '
                 <a href="./overzicht.php">Overzicht</a>
                 <a href="./toevoegen.php">Gedetineerde toevoegen</a>
+                <a href="./bezoek.php">Bezoek overzicht</a>
                 <a href="./account.php">Over mijn account</a>';
         break;
     case "Bewaker":
@@ -31,12 +33,14 @@ switch ($userRole) {
         $menu = '
                 <a href="./overzicht.php">Overzicht</a>
                 <a href="./toevoegen.php">Gedetineerde toevoegen</a>
+                <a href="./bezoek.php">Bezoek overzicht</a>
                 <a href="./account.php">Over mijn account</a>';
         break;
     case "Supervisor":
         $menu = '
                 <a href="./overzicht.php">Overzicht</a>
                 <a href="./toevoegen.php">Gedetineerde toevoegen</a>
+                <a href="./bezoek.php">Bezoek overzicht</a>
                 <a href="./account.php">Over mijn account</a>';
         break;
     default:

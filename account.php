@@ -83,11 +83,18 @@ include("inc/menu_klantenportaal.php");
 
             </table>
             <br><br>
-            <input type="submit" name="submit" value="Opslaan">
+            <input type="submit" name="submit" value="Opslaan"><br><br>
+            <input type="submit" name="terug" value="Terug">
         </form>
     </div>
 
 <?php
+
+if (isset($_POST['terug'])) {
+    header("location: overzicht.php");
+    exit();
+}
+
 if (isset($_POST['submit'])) {
     $gebruikersnaam = $_POST['gebruikersnaam'];
     $naam = $_POST['naam_gebruiker'];

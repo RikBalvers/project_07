@@ -31,7 +31,8 @@ if (isset($_SESSION['uname'])) {
                         Inlognaam: <input type="text" name="uname">
                     </div>
                     <div class="login_text">
-                        Wachtwoord: <input type="text" name="pwd">
+                        Wachtwoord: <input type="password" id="ww-login" name="pwd">
+                        <i class="eye fa fa-solid fa-eye" id="togglePassword" style="color: #f67b50;"></i>
                     </div>
                     </br>
                     <div class="g-recaptcha" data-sitekey="6LfT_hslAAAAAHm2MXbg-mt_RES4-hrz9BwUGlU4"></div>
@@ -51,12 +52,19 @@ if (isset($_SESSION['uname'])) {
         </div>
     </div>
 
+<!-- het oog bij wachtwoord door king julian -->
+<script>
+    const togglePassword = document.querySelector('#togglePassword');
+        const password = document.querySelector('#ww-login');
+
+        togglePassword.addEventListener('click', function (e) {
+            // toggle the type attribute
+            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+            password.setAttribute('type', type);
+            // toggle the eye slash icon
+            this.classList.toggle('fa-eye-slash');
+        });
+</script>
 
 </body>
 </html>
-
-
-
-<!-- Username database: hoornhack -->
-<!-- Password database: Wjg5l[-nn(QBbUqV -->
-
